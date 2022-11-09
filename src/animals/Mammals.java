@@ -7,7 +7,7 @@ public class Mammals extends Animals { // Млекопитающие
 
     public Mammals(String name, int age, String livingEnvironment) {
         super(name, age);
-        this.livingEnvironment = Default(livingEnvironment, "Не указано");
+        this.livingEnvironment = Validation.validDefault(livingEnvironment, "Не указано");
     }
 
     public void walk() { // Гулять
@@ -19,15 +19,7 @@ public class Mammals extends Animals { // Млекопитающие
     }
 
     public void setLivingEnvironment(String livingEnvironment) {
-        this.livingEnvironment = Default(livingEnvironment, "Не указано");
-    }
-
-    public String Default(String value, String Default) {
-        if (value == null || value.isBlank()) {
-            return Default;
-        } else {
-            return value;
-        }
+        this.livingEnvironment = Validation.validDefault(livingEnvironment, "Не указано");
     }
 
     @Override

@@ -8,8 +8,8 @@ public class Amphibians extends Animals { //Земноводные
 
     public Amphibians(String name, int age, String livingEnvironment, int travelSpeed) {
         super(name, age);
-        this.travelSpeed = DefaultNum(travelSpeed);
-        this.livingEnvironment = Default(livingEnvironment, "Не указано");
+        this.travelSpeed = Validation.defaultNum(travelSpeed);
+        this.livingEnvironment = Validation.validDefault(livingEnvironment, "Не указано");
     }
 
     public void walk() { // Гулять
@@ -29,27 +29,11 @@ public class Amphibians extends Animals { //Земноводные
     }
 
     public void setLivingEnvironment(String livingEnvironment) {
-        this.livingEnvironment = Default(livingEnvironment, "Не указано");
+        this.livingEnvironment = Validation.validDefault(livingEnvironment, "Не указано");
     }
 
     public int getTravelSpeed() {
-        return travelSpeed = travelSpeed;
-    }
-
-    public String Default(String value, String Default) {
-        if (value == null || value.isBlank()) {
-            return Default;
-        } else {
-            return value;
-        }
-    }
-
-    public int DefaultNum(int value) {
-        if (value >= 0) {
-            return value;
-        } else {
-            return Math.abs(value);
-        }
+        return travelSpeed = Validation.defaultNum(travelSpeed);
     }
 
     @Override
@@ -63,10 +47,5 @@ public class Amphibians extends Animals { //Земноводные
         if (o == null || getClass() != o.getClass()) return false;
         Amphibians that = (Amphibians) o;
         return travelSpeed == that.travelSpeed && Objects.equals(livingEnvironment, that.livingEnvironment);
-    }
-
-    @Override
-    public int hashCode() {
-        return 0;
     }
 }

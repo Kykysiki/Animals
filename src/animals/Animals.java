@@ -5,8 +5,8 @@ public class Animals {
     private int age;
 
     public Animals(String name, int age) {
-        this.name = Default(name, "Не указано");
-        this.age = DefaultNum(age);
+        this.name = Validation.validDefault(name, "Не указано");
+        this.age = Validation.defaultNum(age);
     }
 
     public void eat() {
@@ -43,21 +43,5 @@ public class Animals {
 
     public int getAge() {
         return age = age;
-    }
-
-    public String Default(String value, String Default) {
-        if (value == null || value.isBlank()) {
-            return Default;
-        } else {
-            return value;
-        }
-    }
-
-    public int DefaultNum(int value) {
-        if (value >= 0) {
-            return value;
-        } else {
-            return Math.abs(value);
-        }
     }
 }

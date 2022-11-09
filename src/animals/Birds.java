@@ -7,10 +7,10 @@ public class Birds extends Animals { // Птицы
 
     public Birds(String name, int age, String livingEnvironment) {
         super(name, age);
-        this.livingEnvironment = Default(livingEnvironment, "Не указана");
+        this.livingEnvironment = Validation.validDefault(livingEnvironment, "Не указана");
     }
 
-    public void hunt() { // Охотится
+    public void hunt() { // Охотиться
 
     }
 
@@ -19,15 +19,7 @@ public class Birds extends Animals { // Птицы
     }
 
     public void setLivingEnvironment(String livingEnvironment) {
-        this.livingEnvironment = Default(livingEnvironment, "Не указана");
-    }
-
-    public String Default(String value, String Default) {
-        if (value == null || value.isBlank()) {
-            return Default;
-        } else {
-            return value;
-        }
+        this.livingEnvironment = Validation.validDefault(livingEnvironment, "Не указана");
     }
 
     @Override
@@ -36,10 +28,5 @@ public class Birds extends Animals { // Птицы
         if (o == null || getClass() != o.getClass()) return false;
         Birds birds = (Birds) o;
         return Objects.equals(livingEnvironment, birds.livingEnvironment);
-    }
-
-    @Override
-    public int hashCode() {
-        return 0;
     }
 }

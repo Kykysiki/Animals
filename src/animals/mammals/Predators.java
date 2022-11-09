@@ -1,6 +1,7 @@
 package animals.mammals;
 
 import animals.Mammals;
+import animals.Validation;
 
 import java.util.Objects;
 
@@ -9,7 +10,7 @@ public class Predators extends Mammals { // Хищники
 
     public Predators(String name, int age, String livingEnvironment, String typeOfFood) {
         super(name, age, livingEnvironment);
-        this.typeOfFood = Default(typeOfFood, "Не указан");
+        this.typeOfFood = Validation.validDefault(typeOfFood, "Не указан");
     }
 
     public void hunt() { // Охотиться
@@ -29,20 +30,12 @@ public class Predators extends Mammals { // Хищники
     }
 
     public void setTypeOfFood(String typeOfFood) {
-        this.typeOfFood = Default(typeOfFood, "Не указан");
+        this.typeOfFood = Validation.validDefault(typeOfFood, "Не указан");
     }
 
     @Override
     public String toString() {
         return "Млекопитающие(хищники) : " + getName() + ", возвраст - " + getAge() + ", место обитания - " + livingEnvironment + ", тип пищи - " + typeOfFood;
-    }
-
-    public String Default(String value, String Default) {
-        if (value == null || value.isBlank()) {
-            return Default;
-        } else {
-            return value;
-        }
     }
 
     @Override
@@ -52,10 +45,5 @@ public class Predators extends Mammals { // Хищники
         if (!super.equals(o)) return false;
         Predators predators = (Predators) o;
         return Objects.equals(typeOfFood, predators.typeOfFood);
-    }
-
-    @Override
-    public int hashCode() {
-        return 0;
     }
 }
